@@ -277,7 +277,7 @@ var Game = function() {
 
     }
 
-    // api
+    // apiscript.js
     this.init = init;
     this.down = down;
     this.left = left;
