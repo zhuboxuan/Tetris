@@ -271,4 +271,5 @@ SquareFactory.prototype.make = function(index, dir) {
     s.origin.y = 3;
     s.rotate(dir);
     return s;
+    
 }
