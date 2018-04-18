@@ -1,5 +1,7 @@
 package com.game.tetris.controller;
 
+import com.game.tetris.entity.UserEntity;
+import com.game.tetris.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/front/*")
 public class IndexController {
-//    @Autowired
-//    private UserDao userDao;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/index")
     public String index() {
@@ -35,7 +37,7 @@ public class IndexController {
             UserEntity userEntity = new UserEntity();
             userEntity.setUsername(username);
             userEntity.setPassword(password);
-            userDao.save(userEntity);
+            userService.save(userEntity);
             return "index";
         }else {
             return "register";
@@ -51,9 +53,9 @@ public class IndexController {
     public String login(HttpServletRequest request){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        UserEntity userEntity = userDao.findByUsernameAndPassword(username,password);
+        boolean isLogin = userService.isUserLogin(username,password);
         String str = "";
-        if (userEntity !=null){
+        if (isLogin == true){
             str = "index";
         }else {
             str = "login";
