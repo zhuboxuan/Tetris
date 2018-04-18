@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018/4/17.
  */
 @Controller
-@RequestMapping("/front/*")
 public class IndexController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/game")
     public String index() {
-        return "index";
+        System.out.println("in");
+        return "game";
     }
 
     @RequestMapping("/register")
@@ -38,7 +38,7 @@ public class IndexController {
             userEntity.setUsername(username);
             userEntity.setPassword(password);
             userService.save(userEntity);
-            return "index";
+            return "game";
         }else {
             return "register";
         }
@@ -56,7 +56,7 @@ public class IndexController {
         boolean isLogin = userService.isUserLogin(username,password);
         String str = "";
         if (isLogin == true){
-            str = "index";
+            str = "game";
         }else {
             str = "login";
         }
