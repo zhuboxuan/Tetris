@@ -17,4 +17,8 @@ public interface UserService {
     boolean update(UserEntity userEntity);
 
     UserEntity findByToken(String token);
+
+    UserEntity getMaxScore();
+
+    boolean updateScore(UserEntity userEntity);
 }

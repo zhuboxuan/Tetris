@@ -43,7 +43,12 @@ h3 {
 .wrapper ul {
     line-height: 20px;
     position: absolute;
-    top: 470px;
+    top: 540px;
+}
+.best {
+    line-height: 20px;
+    position: absolute;
+    top: 470px
 }
 
 .game {
@@ -66,7 +71,7 @@ h3 {
 
 #click {
     position: absolute;
-    top: 236px;
+    top: 277px;
     left: 220px;
 }
 
