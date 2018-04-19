@@ -33,4 +33,10 @@ public class UserServiceImpl implements UserService{
         return user!=null;
     }
 
+    @Override
+    public boolean update(UserEntity userEntity) {
+        userRepository.updateTokenByUser(userEntity.getUsername(), userEntity.getToken());
+        return true;
+    }
+
 }

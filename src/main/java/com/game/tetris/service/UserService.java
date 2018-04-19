@@ -13,4 +13,6 @@ public interface UserService {
     boolean isTokenRight(String token);
 
     boolean save(UserEntity userEntity);
+
+    boolean update(UserEntity userEntity);
 }

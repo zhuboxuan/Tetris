@@ -2,6 +2,7 @@ package com.game.tetris.controller;
 
 import com.game.tetris.entity.UserEntity;
 import com.game.tetris.service.UserService;
+import com.game.tetris.util.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,7 @@ public class IndexController {
             UserEntity userEntity = new UserEntity();
             userEntity.setUsername(username);
             userEntity.setPassword(password);
+            userEntity.setToken(TokenUtils.createToken());
             userService.save(userEntity);
             return "game";
         }else {
@@ -56,6 +58,11 @@ public class IndexController {
         boolean isLogin = userService.isUserLogin(username,password);
         String str = "";
         if (isLogin == true){
+            UserEntity userEntity = new UserEntity();
+            userEntity.setToken(TokenUtils.createToken());
+            userEntity.setUsername(username);
+            userEntity.setPassword(password);
+            userService.update(userEntity);
             str = "game";
         }else {
             str = "login";

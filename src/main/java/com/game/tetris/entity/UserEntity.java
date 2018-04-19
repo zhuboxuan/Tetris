@@ -1,9 +1,6 @@
 package com.game.tetris.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.lang.annotation.Native;
 import java.util.Date;
@@ -12,7 +9,8 @@ import java.util.Date;
  * @author zjb
  * @date 2018/4/18.
  */
-@Entity(name="tlb_user")
+@Entity
+@Table(name = "tlb_user")
 public class UserEntity implements Serializable{
 
     private static final long serialVersionUID = -459848797892018227L;
