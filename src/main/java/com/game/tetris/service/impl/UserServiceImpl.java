@@ -39,4 +39,10 @@ public class UserServiceImpl implements UserService{
         return true;
     }
 
+    @Override
+    public UserEntity findByToken(String token) {
+
+        return userRepository.findByToken(token);
+    }
+
 }

@@ -15,4 +15,6 @@ public interface UserService {
     boolean save(UserEntity userEntity);
 
     boolean update(UserEntity userEntity);
+
+    UserEntity findByToken(String token);
 }

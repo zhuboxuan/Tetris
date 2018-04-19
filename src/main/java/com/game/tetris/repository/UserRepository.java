@@ -20,4 +20,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
     @Modifying
     @Query("update UserEntity u set u.token = :token where u.username = :username")
     int updateTokenByUser(@Param("username") String username, @Param("token") String token);
+
+    UserEntity findByToken(String token);
 }
+
+
