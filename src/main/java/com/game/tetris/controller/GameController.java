@@ -61,7 +61,7 @@ public class GameController {
                 if ("token".equals(cookie.getName())) {
                     String token = cookie.getValue();
                     UserEntity user = userService.findByToken(token);
-                    if(user.getMaxScore() < s){
+                    if(user.getMaxScore() == null || user.getMaxScore() < s){
                         userEntity.setToken(token);
                         userEntity.setMaxScore(s);
                         userService.updateScore(userEntity);
