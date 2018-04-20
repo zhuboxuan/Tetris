@@ -274,7 +274,15 @@ var Game = function() {
         } else {
             resultDiv.innerText = "GAME OVER!"
         }
-
+        var s = $("#score").text();
+        var uri = "/api/score/" + s;
+        $.ajax({
+            type: "GET",
+            url: uri, //路径
+            dataType: "json",
+            success: function (data) {
+            }
+        });
     }
 
     // apiscript.js
