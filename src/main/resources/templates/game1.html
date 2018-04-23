@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="wrapper">
+    <h3>Tetris</h3>
+
+    <div class="game" id="game"></div>
+    <div id="others">
+        <div class="next" id="next"></div>
+        <div class="info">
+            <div>Time：<span id="time">0</span>Sec</div>
+            <div>Score：<span id="score">0</span>Point</div>
+            <div>Best：<span id="max">0</span>Point</div>
+            <div id="gameOver"></div>
+        </div>
+    </div>
+    <div id="click">
+        <div id="newGame">NEW</div>
+        <div id="up">U</div>
+        <div id="left">L</div>
+        <div id="right">R</div>
+        <div id="down">D</div>
+        <div id="fall">FALL</div>
+    </div>
+    <ul>
+        <li>web user use button keyboard </li>
+        <li>mobile web user use button</li>
+    </ul>
+    <div class="best" id="best">
+        <div>User name：<span id="user"></span></div>
+        <div>BestScore：<span id="bestScore">0</span> Point</div>
+    </div>
+</div>
+
+<script src="/js/jquery/jquery-3.3.1.js"></script>
+<script src="/js/game.js"></script>
+<script src="/js/local.js"></script>
+<!--<script src="js/remote.js"></script>-->
+<script src="/js/square.js"></script>
+<script src="/js/squareFactory.js"></script>
+<script src="main.js"></script>
+</body>
+
+</html>

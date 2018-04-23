@@ -20,8 +20,8 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/game")
-    public String index(HttpServletRequest request) {
+    @RequestMapping("/game1")
+    public String indexGame1(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         boolean isLogin = false;
         if(cookies != null) {
@@ -29,7 +29,7 @@ public class IndexController {
                 if ("token".equals(cookie.getName())) {
                     String token = cookie.getValue();
                     UserEntity userEntity = userService.findByToken(token);
-                    if (token.equals(userEntity.getToken()) && System.currentTimeMillis() -
+                    if (userEntity != null && token.equals(userEntity.getToken()) && System.currentTimeMillis() -
                             userEntity.getGmtUpdate().getTime() < 24 * 3600 * 1000) {
                         isLogin = true;
                     }
@@ -37,7 +37,30 @@ public class IndexController {
             }
         }
         if(isLogin){
-            return "game";
+            return "game1";
+        }else {
+            return "login";
+        }
+    }
+
+    @RequestMapping("/game2")
+    public String indexGame2(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        boolean isLogin = false;
+        if(cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("token".equals(cookie.getName())) {
+                    String token = cookie.getValue();
+                    UserEntity userEntity = userService.findByToken(token);
+                    if (userEntity != null && token.equals(userEntity.getToken()) && System.currentTimeMillis() -
+                            userEntity.getGmtUpdate().getTime() < 24 * 3600 * 1000) {
+                        isLogin = true;
+                    }
+                }
+            }
+        }
+        if(isLogin){
+            return "game2";
         }else {
             return "login";
         }
