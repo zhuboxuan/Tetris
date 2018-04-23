@@ -66,4 +66,10 @@ public class UserServiceImpl implements UserService{
         return true;
     }
 
+    @Override
+    public boolean updateScore2(UserEntity userEntity) {
+        userRepository.updateScore2ByToken(userEntity.getMaxScore(), userEntity.getToken());
+        return true;
+    }
+
 }

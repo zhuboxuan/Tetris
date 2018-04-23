@@ -20,6 +20,29 @@ public class IndexController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/game")
+    public String indexGame(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        boolean isLogin = false;
+        if(cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("token".equals(cookie.getName())) {
+                    String token = cookie.getValue();
+                    UserEntity userEntity = userService.findByToken(token);
+                    if (userEntity != null && token.equals(userEntity.getToken()) && System.currentTimeMillis() -
+                            userEntity.getGmtUpdate().getTime() < 24 * 3600 * 1000) {
+                        isLogin = true;
+                    }
+                }
+            }
+        }
+        if(isLogin){
+            return "game";
+        }else {
+            return "login";
+        }
+    }
+
     @RequestMapping("/game1")
     public String indexGame1(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();

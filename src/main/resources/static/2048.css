@@ -35,6 +35,10 @@ header p{
 	font-size: 25px;
 	margin: 20px auto;
 }
+.best div{
+	display: flex;
+	margin: 10px 0;
+}
 
 .grid-container{
 	width: 480px;

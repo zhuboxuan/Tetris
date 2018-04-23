@@ -33,6 +33,15 @@ public class GameController {
         return userEntity;
     }
 
+    @GetMapping("/api/score2/max")
+    @ResponseBody
+    public UserEntity getMaxScore2(){
+        UserEntity userEntity = userService.getMaxScore();
+        userEntity.setPassword("");
+        userEntity.setToken("");
+        return userEntity;
+    }
+
     @GetMapping("/api/user")
     @ResponseBody
     public UserEntity getUser(HttpServletRequest request){
@@ -65,6 +74,27 @@ public class GameController {
                         userEntity.setToken(token);
                         userEntity.setMaxScore(s);
                         userService.updateScore(userEntity);
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    @GetMapping("/api/score2/{s}")
+    @ResponseBody
+    public Boolean setScore2(@PathVariable("s") Integer s, HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();
+        UserEntity userEntity = new UserEntity();
+        if(cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("token".equals(cookie.getName())) {
+                    String token = cookie.getValue();
+                    UserEntity user = userService.findByToken(token);
+                    if(user.getMaxScore2() == null || user.getMaxScore2() < s){
+                        userEntity.setToken(token);
+                        userEntity.setMaxScore2(s);
+                        userService.updateScore2(userEntity);
                     }
                 }
             }

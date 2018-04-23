@@ -10,6 +10,23 @@ var endy = 0;
 $(document).ready(function(){
 	prepareForMobile();
 	newgame();
+    $.ajax({
+        type: "GET",
+        url: "/api/user", //路径
+        dataType: "json",
+        success: function (data) {
+            $("#max").text(data.maxScore2);
+        }
+    });
+    $.ajax({
+        type: "GET",
+        url: "/api/score2/max", //路径
+        dataType: "json",
+        success: function (data) {
+            $("#user").text(data.username);
+            $("#bestScore").text(data.maxScore2);
+        }
+    });
 })
 
 function prepareForMobile(){
@@ -239,6 +256,15 @@ function isganeover(){
 }
 
 function gameover(){
+    var s = $("#score").text();
+    var uri = "/api/score2/" + s;
+    $.ajax({
+        type: "GET",
+        url: uri, //路径
+        dataType: "json",
+        success: function (data) {
+        }
+    });
 	alert("GAMEOVER!");
 }
 

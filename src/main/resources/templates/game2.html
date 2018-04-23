@@ -14,6 +14,7 @@
 	<header>
 		<h1>2048</h1>
 		<a href="javascript:newgame();" id="newgamebutton" role="button">New Game</a><!--role无障碍访问协议-->
+		<p>MaxScore:<span id="max">0</span></p>
 		<p>score:<span id="score">0</span></p>
 	</header>
 	<div class="grid-container">
@@ -33,6 +34,10 @@
 		<div class="grid-cell" id="grid-cell-3-1"></div>
 		<div class="grid-cell" id="grid-cell-3-2"></div>
 		<div class="grid-cell" id="grid-cell-3-3"></div>
+	</div>
+	<div class="best">
+		<p>User Name:<span id="user"></span></p>
+		<p>Best Score:<span id="bestScore">0</span></p>
 	</div>
 </body>
 </html>

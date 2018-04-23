@@ -21,4 +21,6 @@ public interface UserService {
     UserEntity getMaxScore();
 
     boolean updateScore(UserEntity userEntity);
+
+    boolean updateScore2(UserEntity userEntity);
 }

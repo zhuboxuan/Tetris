@@ -31,6 +31,11 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>{
     @Query("update UserEntity u set u.maxScore = :maxScore where u.token = :token")
     int updateScoreByToken(@Param("maxScore") Integer score, @Param("token") String token);
 
+
+    @Transactional
+    @Modifying
+    @Query("update UserEntity u set u.maxScore2 = :maxScore2 where u.token = :token")
+    int updateScore2ByToken(@Param("maxScore2") Integer score, @Param("token") String token);
 }
 
 

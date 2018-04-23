@@ -20,6 +20,7 @@ public class UserEntity implements Serializable{
     private String username;
     private String password;
     private Integer maxScore;
+    private Integer maxScore2;
     private String token;
     private Date gmtCreate;
     private Date gmtUpdate;
@@ -80,6 +81,14 @@ public class UserEntity implements Serializable{
         this.gmtUpdate = gmtUpdate;
     }
 
+    public Integer getMaxScore2() {
+        return maxScore2;
+    }
+
+    public void setMaxScore2(Integer maxScore2) {
+        this.maxScore2 = maxScore2;
+    }
+
     @Override
     public String toString() {
         return "UserEntity{" +
@@ -87,6 +96,8 @@ public class UserEntity implements Serializable{
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", maxScore=" + maxScore +
+                ", maxScore2=" + maxScore2 +
+                ", token='" + token + '\'' +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtUpdate=" + gmtUpdate +
                 '}';
